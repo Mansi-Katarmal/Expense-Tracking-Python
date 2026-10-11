@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#526277"/>
+    </marker>
+    <style>
+      .title { font: 700 28px Arial, sans-serif; fill: #172033; }
+      .subtitle { font: 15px Arial, sans-serif; fill: #526277; }
+      .heading { font: 700 18px Arial, sans-serif; fill: #172033; }
+      .body { font: 15px Arial, sans-serif; fill: #263449; }
+      .small { font: 13px Arial, sans-serif; fill: #526277; }
+      .box { stroke-width: 2; rx: 14; }
+      .arrow { stroke: #526277; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .dashed { stroke-dasharray: 7 6; }
+    </style>
+  </defs>
+  <rect width="1200" height="820" fill="#f7f9fc"/>
+  <text x="600" y="48" text-anchor="middle" class="title">Expense Tracking System — Architecture</text>
+  <text x="600" y="75" text-anchor="middle" class="subtitle">Streamlit UI → FastAPI + Pydantic → database helper → MySQL</text>
+
+  <!-- Frontend zone -->
+  <rect x="45" y="112" width="1110" height="142" rx="18" fill="#eaf4ff" stroke="#9bc9f5" stroke-width="2"/>
+  <text x="70" y="143" class="heading">Frontend Layer</text>
+  <rect x="300" y="160" width="600" height="70" class="box" fill="#ffffff" stroke="#5aa2e8"/>
+  <text x="600" y="188" text-anchor="middle" class="heading">Streamlit Application</text>
+  <text x="600" y="211" text-anchor="middle" class="body">Add/update expenses • Analytics by date • Analytics by month</text>
+
+  <!-- API layer -->
+  <rect x="45" y="300" width="1110" height="180" rx="18" fill="#eefaf2" stroke="#9bd6ad" stroke-width="2"/>
+  <text x="70" y="332" class="heading">Backend API Layer</text>
+  <rect x="115" y="355" width="440" height="90" class="box" fill="#ffffff" stroke="#55ad75"/>
+  <text x="335" y="385" text-anchor="middle" class="heading">FastAPI — server.py</text>
+  <text x="335" y="410" text-anchor="middle" class="body">HTTP endpoints • Request handling</text>
+  <text x="335" y="430" text-anchor="middle" class="small">Returns API responses to the frontend</text>
+  <rect x="645" y="355" width="440" height="90" class="box" fill="#ffffff" stroke="#55ad75"/>
+  <text x="865" y="385" text-anchor="middle" class="heading">Pydantic Models</text>
+  <text x="865" y="410" text-anchor="middle" class="body">Validates incoming payloads</text>
+  <text x="865" y="430" text-anchor="middle" class="small">Checks expected fields and data types</text>
+
+  <!-- Data layer -->
+  <rect x="45" y="526" width="1110" height="160" rx="18" fill="#fff5e8" stroke="#e8bf83" stroke-width="2"/>
+  <text x="70" y="557" class="heading">Data Access Layer</text>
+  <rect x="115" y="580" width="440" height="78" class="box" fill="#ffffff" stroke="#d99b42"/>
+  <text x="335" y="610" text-anchor="middle" class="heading">db_helper.py</text>
+  <text x="335" y="635" text-anchor="middle" class="body">MySQL connector • Query functions</text>
+  <rect x="645" y="580" width="440" height="78" class="box" fill="#ffffff" stroke="#d99b42"/>
+  <text x="865" y="610" text-anchor="middle" class="heading">MySQL Database</text>
+  <text x="865" y="635" text-anchor="middle" class="body">Expense records and query results</text>
+
+  <!-- Cross-layer arrows -->
+  <path d="M600 230 L600 285" class="arrow"/>
+  <text x="615" y="274" class="small">HTTP request / response</text>
+  <path d="M555 400 L625 400" class="arrow"/>
+  <text x="590" y="389" text-anchor="middle" class="small">validate</text>
+  <path d="M335 445 L335 570" class="arrow"/>
+  <text x="350" y="510" class="small">call database functions</text>
+  <path d="M555 619 L625 619" class="arrow"/>
+  <text x="590" y="607" text-anchor="middle" class="small">SQL</text>
+
+  <!-- Supporting components -->
+  <rect x="45" y="715" width="340" height="72" rx="12" fill="#ffffff" stroke="#a9b4c4" stroke-width="1.5"/>
+  <text x="215" y="743" text-anchor="middle" class="heading">logging_setup.py</text>
+  <text x="215" y="765" text-anchor="middle" class="small">Configures application logging</text>
+  <path d="M215 715 L215 674 L280 674 L280 658" class="arrow dashed"/>
+
+  <rect x="430" y="715" width="340" height="72" rx="12" fill="#ffffff" stroke="#a9b4c4" stroke-width="1.5"/>
+  <text x="600" y="743" text-anchor="middle" class="heading">Pytest</text>
+  <text x="600" y="765" text-anchor="middle" class="small">tests/test_db_helper.py</text>
+  <path d="M600 715 L600 694 L430 694 L430 658" class="arrow dashed"/>
+
+  <rect x="815" y="715" width="340" height="72" rx="12" fill="#ffffff" stroke="#a9b4c4" stroke-width="1.5"/>
+  <text x="985" y="743" text-anchor="middle" class="heading">tests/conftest.py</text>
+  <text x="985" y="765" text-anchor="middle" class="small">Prepares test import path</text>
+  <path d="M815 751 L780 751" class="arrow dashed"/>
+</svg>
